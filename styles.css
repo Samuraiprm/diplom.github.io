@@ -1,0 +1,236 @@
+:root {
+    --dark-bg: #1C1C1E;
+    --vibrant-blue: #007AFF;
+    --blue-violet: #5856D6;
+    --light-contrast: #F2F2F7;
+    --gradient-start: #1C1C1E;
+    --gradient-end: #2C2C2E;
+    --error-color: #FF3B30;
+    --success-color: #34C759;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    color: var(--light-contrast);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--vibrant-blue), var(--blue-violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--light-contrast);
+    opacity: 0.8;
+}
+
+.upload-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.upload-container.drag-over {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--vibrant-blue);
+    transform: scale(1.02);
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.upload-icon {
+    fill: var(--vibrant-blue);
+    margin-bottom: 1rem;
+}
+
+.upload-button {
+    background: linear-gradient(135deg, var(--vibrant-blue), var(--blue-violet));
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 122, 255, 0.3);
+}
+
+.upload-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 122, 255, 0.5);
+}
+
+.file-limits {
+    color: var(--light-contrast);
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+.metadata-container {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.metadata-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.action-button {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light-contrast);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.action-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.action-button.delete {
+    background: rgba(255, 59, 48, 0.2);
+    color: #FF3B30;
+}
+
+.action-button.delete:hover {
+    background: rgba(255, 59, 48, 0.3);
+}
+
+.metadata-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.metadata-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.metadata-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.metadata-item span {
+    font-weight: 500;
+    color: var(--light-contrast);
+    opacity: 0.9;
+}
+
+.metadata-item input {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--light-contrast);
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.3rem;
+    width: 50%;
+    font-size: 0.95rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.metadata-item input:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.metadata-item input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--vibrant-blue);
+}
+
+a.action-button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+a.action-button:hover {
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--light-contrast);
+    opacity: 0.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .metadata-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+} 
